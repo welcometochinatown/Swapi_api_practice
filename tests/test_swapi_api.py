@@ -1,5 +1,6 @@
 from utils.api_methods import SwapiApi
 from utils.text_file_methods import TextFiles
+from utils.checking import Checking
 
 
 class TestNewRequest():
@@ -22,7 +23,7 @@ class TestNewRequest():
         # Отправляем GET запрос по заданному URL, выводим статус код и список фильмов с Дарт Вейдером
         print("First GET request")
         result_get = SwapiApi.get_from_swapi(base_url)
-        print(f"\nСтатус код запроса : {result_get.status_code}")
+        Checking.check_status_code(result_get, 200)
         result_json = result_get.json()
         print(f"Список URL фильмов по запросу :\n {result_json['films']}")
 
@@ -30,7 +31,7 @@ class TestNewRequest():
             """Цикл для работы с фильмами из списка фильмов полученных ранее"""
 
             resul_get_film = SwapiApi.get_from_swapi(films)
-            print(f"\nСтатус код запроса : {resul_get_film.status_code}")
+            Checking.check_status_code(resul_get_film, 200)
             result_json = resul_get_film.json()
             print(f"Список URL персонажей по запросу :\n {result_json['characters']}")
 
