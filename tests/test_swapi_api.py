@@ -39,7 +39,7 @@ class TestNewRequest():
                 """Цикл для работы с именами из списка персонажей полученных ранее"""
 
                 result_get_name = SwapiApi.get_from_swapi(character)
-                # print(result_get_name.status_code)
+                # Checking.check_status_code(result_get_name, 200)
                 result_json = result_get_name.json()
                 # print(result_json['name'])
 
